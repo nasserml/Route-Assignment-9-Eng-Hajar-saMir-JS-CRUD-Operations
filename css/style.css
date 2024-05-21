@@ -1,0 +1,115 @@
+body {
+    font-family: "PT Sans Caption", sans-serif;
+    background-color: #F7ECDE;
+}
+
+h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 50px;
+    color: #352e28;
+    font-weight: 500;
+}
+h2{ 
+    font-family: "Righteous", sans-serif;
+    font-size: 25px;
+    background: linear-gradient(to right, #3ca55c, #efdd14);
+    background-clip: text;
+    color: transparent;
+}
+
+#bookmark{
+    position: relative;
+    padding: 48px 0;
+}
+
+#bookmark-title{
+    position: relative;
+    padding: 8px 0;
+}
+
+#bookmark-title::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    left: 0;
+    bottom: 10px;
+    background-color: #fec260;
+    transition: height 350ms;
+    z-index: -1;
+}
+
+#bookmark-title:hover::before{
+    height: 50%;
+}
+
+#bookmark-favorite{
+    padding: 24px 16px;
+    border-width: 2px 0 2px 0;
+    border-style: dotted;
+    border-color: #352e28;
+    margin: 48px 0px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 16px;
+    color: rgb(33, 37, 41);
+    line-height: 24px;
+}
+
+#submitButton{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: white;
+    width: 155px;
+    background-color: #D1512D;
+    margin: 0 39%;
+}
+
+#submitButton:hover{
+    background-color: #bb4120;
+}
+
+
+
+
+
+
+#bookmark-table thead th {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+#bookmarkTableRow{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(33, 37, 41);
+}
+
+#bookmarkTableRow .button-visit{
+    color: white;
+    background-color: #9eb23b;
+}
+
+#bookmarkTableRow .button-visit:hover{
+    background-color: #8A9E23;
+}
+
+#bookmarkTableRow .button-delete {
+    color: white;
+    background-color:#eb1d36 ;
+}
+
+#bookmarkTableRow .button-delete:hover{
+    background-color: #d30820;
+}
+
+
+
+
+
+
