@@ -15,20 +15,26 @@ if(localStorage.getItem('bookmarkList') == null) {
 
 submitButton.onclick=function(){
     addBookmark();
-    clearBookmarkForm();
+    
     displayBookmark();
 }
 
 function addBookmark() {
 
-    var bookmarksObject={
-        siteURL:siteURL.value,
-        siteName:siteName.value
+
+    if(validation(siteName)&&validation(siteURL)){
+        var bookmarksObject={
+            siteURL:siteURL.value.startsWith('http://') || siteURL.value.startsWith('https://') || siteURL.value.startsWith('ftp://') ? siteURL.value: 'https://' +siteURL.value,// 
+            siteName:siteName.value
+        }
+    
+        bookmarkList.push(bookmarksObject);
+    
+        localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
+        clearBookmarkForm();
     }
 
-    bookmarkList.push(bookmarksObject);
-
-    localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
+    
 }
 
 
@@ -36,10 +42,11 @@ function displayBookmark(){
     var box='';
 
     for(var i=0; i<bookmarkList.length; i++) {
+        
         box += `<tr>
         <td>${i+1}</td>
         <td>${bookmarkList[i].siteName}</td>
-        <td><button class="btn button-visit" onclick="window.open('https://${bookmarkList[i].siteURL}','_blank');">
+        <td><button class="btn button-visit" onclick="window.open('${bookmarkList[i].siteURL}','_blank');">
         
             <i class="fa-solid fa-eye"></i> Visit
         </button></td>
@@ -64,3 +71,37 @@ function deleteBookmark(index){
     localStorage.setItem('bookmarkList',JSON.stringify(bookmarkList));
     displayBookmark();
 }
+
+
+
+
+
+
+
+
+function validation(ele){
+
+
+    var regex={
+        siteName:/^[A-Za-z]{3,}$/,
+        siteURL:/^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/
+    }
+
+
+    if(regex[ele.id].test(ele.value)){
+
+        ele.classList.add('is-valid');
+        ele.classList.remove('is-invalid');
+        ele.nextElementSibling.classList.replace('d-block','d-none');
+        return true;
+    }else{
+        ele.classList.add('is-invalid');
+        ele.classList.remove('is-valid');
+        ele.nextElementSibling.classList.replace('d-none','d-block');
+        return false;
+    }
+  
+
+}
+
+

@@ -40,10 +40,16 @@
                 <form action="" class="d-flex flex-column justify-content-center w-100">
                     
                     <label for="siteName" class="pb-2"><i class="fa-solid fa-book-bookmark"></i> Site Name</label>
-                    <input type="text" name="siteName" id="siteName" class="form-control" placeholder="Bookmark Name">
+                    <input type="text" name="siteName" id="siteName" class="form-control" placeholder="Bookmark Name" oninput="validation(this)">
+                    <div class="alert alert-danger  p-2 my-3 d-none">
+                        <small><i class="fa-regular fa-circle-right p-2"></i> Site name must contain at least 3 characteres</small>
+                    </div>
 
                     <label for="siteURL" class="pb-2 py-4"><i class="fa-solid fa-link"></i> Site URL</label>
-                    <input type="text" name="siteURL" id="siteURL" class="form-control" placeholder="Website URL">
+                    <input type="text" name="siteURL" id="siteURL" class="form-control" placeholder="Website URL" oninput="validation(this)">
+                    <div class="alert alert-danger  p-2 my-3 d-none">
+                        <small><i class="fa-regular fa-circle-right p-2"></i> Site URL must be a valid one</small>
+                    </div>
 
                     <button type="button" class="btn my-4 center  " id="submitButton">submit</button>
 
